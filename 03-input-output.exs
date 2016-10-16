@@ -1,5 +1,6 @@
 # http://elixir-lang.org/docs/stable/elixir/Path.html#content
 # http://elixir-lang.org/docs/stable/elixir/File.html#content
+# http://elixir-lang.org/getting-started/try-catch-and-rescue.html
 
 defmodule InputOutput do
     def readFromSystem do
@@ -8,7 +9,7 @@ defmodule InputOutput do
             |> String.strip
             |> String.upcase
 
-        case IO.getn("Read file y/n ? ", 1) do
+        case IO.getn("Read file y/n ? ") do
             "y" ->
                 IO.puts(file)
             "n" ->
@@ -21,7 +22,7 @@ defmodule InputOutput do
     def file do
         path = Path.expand("src/hey.txt", __DIR__)
         case File.read(path) do
-            {:ok, value} -> value
+            {:ok, body} -> body
             {:error, _} -> IO.puts("Error: hey.txt file not found!")
         end
     end
