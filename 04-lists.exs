@@ -1,5 +1,6 @@
 # http://elixir-lang.org/getting-started/basic-types.html
 # http://elixir-lang.org/docs/stable/elixir/Enum.html#content
+# http://elixir-lang.org/getting-started/keywords-and-maps.html
 
 ExUnit.start
 
@@ -37,5 +38,21 @@ defmodule ListTest do
             |> Enum.reverse
 
         assert result === ["Concat and Reverse", 9, 7, 5, 3, 1]
+    end
+
+    # Representing a key value data structure
+    # A keyword list is a list of tuples where the first item of the tuple is an atom
+    # We can use a special syntax for [key: value]
+    # Since keyword list is a list we can use list functions
+    test "keyword list" do
+        result = [a: "key", b: "word", c: "list"]
+
+        assert result[:a] === "key"
+    end
+
+    test "map keyword list" do
+        result = [a: "key", b: "word", c: "list"]
+
+        assert List.first(result) === {:a, "key"}
     end
 end
